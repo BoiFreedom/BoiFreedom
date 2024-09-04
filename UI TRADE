@@ -1,0 +1,182 @@
+
+-- Create the main ScreenGui
+local screenGui = Instance.new("ScreenGui")
+screenGui.Parent = game.CoreGui  -- For executors, it should be placed in CoreGui
+
+-- Create the main Frame
+local mainFrame = Instance.new("Frame")
+mainFrame.Size = UDim2.new(0, 300, 0, 150)
+mainFrame.Position = UDim2.new(0.5, -150, 0.5, -75)
+mainFrame.BackgroundColor3 = Color3.new(0, 0, 0)
+mainFrame.BorderSizePixel = 0
+mainFrame.Parent = screenGui
+
+-- Create the Title Label
+local titleLabel = Instance.new("TextLabel")
+titleLabel.Size = UDim2.new(1, 0, 0, 30)
+titleLabel.BackgroundTransparency = 1
+titleLabel.Text = "Nico Trade Scam!"
+titleLabel.TextColor3 = Color3.new(1, 1, 1)
+titleLabel.Font = Enum.Font.SourceSansBold
+titleLabel.TextSize = 24
+titleLabel.Parent = mainFrame
+
+-- Create the TextBox for player name input
+local playerNameBox = Instance.new("TextBox")
+playerNameBox.Size = UDim2.new(0.8, 0, 0, 40)
+playerNameBox.Position = UDim2.new(0.1, 0, 0.4, 0)
+playerNameBox.BackgroundColor3 = Color3.new(0.2, 0.2, 0.2)
+playerNameBox.TextColor3 = Color3.new(1, 1, 1)
+playerNameBox.PlaceholderText = "Enter the Player Name"
+playerNameBox.Font = Enum.Font.SourceSans
+playerNameBox.TextSize = 20
+playerNameBox.Parent = mainFrame
+
+-- Create the Trade Scam button
+local tradeScamButton = Instance.new("TextButton")
+tradeScamButton.Size = UDim2.new(0.8, 0, 0, 40)
+tradeScamButton.Position = UDim2.new(0.1, 0, 0.7, 0)
+tradeScamButton.BackgroundColor3 = Color3.fromRGB(0, 170, 255)
+tradeScamButton.Text = "Trade Scam"
+tradeScamButton.TextColor3 = Color3.new(1, 1, 1)
+tradeScamButton.Font = Enum.Font.SourceSansBold
+tradeScamButton.TextSize = 20
+tradeScamButton.Parent = mainFrame
+
+-- Function to make the frame draggable
+local UIS = game:GetService("UserInputService")
+local dragToggle = nil
+local dragStart = nil
+local startPos = nil
+
+local function updateInput(input)
+    local delta = input.Position - dragStart
+    mainFrame.Position = UDim2.new(startPos.X.Scale, startPos.X.Offset + delta.X,
+                                   startPos.Y.Scale, startPos.Y.Offset + delta.Y)
+end
+
+mainFrame.InputBegan:Connect(function(input)
+    if input.UserInputType == Enum.UserInputType.MouseButton1 then
+        dragToggle = true
+        dragStart = input.Position
+        startPos = mainFrame.Position
+        
+        input.Changed:Connect(function()
+            if input.UserInputState == Enum.UserInputState.End then
+                dragToggle = false
+            end
+        end)
+    end
+end)
+
+UIS.InputChanged:Connect(function(input)
+    if input.UserInputType == Enum.UserInputType.MouseMovement and dragToggle then
+        updateInput(input)
+    end
+end)
+
+-- Function to create a Rainbow RGB effect
+local function rainbowEffect()
+    local hue = 0
+    while true do
+        hue = hue + 1 / 360  -- Adjust the speed of color change by altering the increment
+        if hue >= 1 then
+            hue = 0
+        end
+        mainFrame.BackgroundColor3 = Color3.fromHSV(hue, 1, 1)
+        wait(0.1)  -- Adjust this for speed of transition
+    end
+end
+
+-- Start the rainbow effect in a coroutine
+coroutine.wrap(rainbowEffect)()-- Create the main ScreenGui
+local screenGui = Instance.new("ScreenGui")
+screenGui.Parent = game.CoreGui  -- For executors, it should be placed in CoreGui
+
+-- Create the main Frame
+local mainFrame = Instance.new("Frame")
+mainFrame.Size = UDim2.new(0, 300, 0, 150)
+mainFrame.Position = UDim2.new(0.5, -150, 0.5, -75)
+mainFrame.BackgroundColor3 = Color3.new(0, 0, 0)
+mainFrame.BorderSizePixel = 0
+mainFrame.Parent = screenGui
+
+-- Create the Title Label
+local titleLabel = Instance.new("TextLabel")
+titleLabel.Size = UDim2.new(1, 0, 0, 30)
+titleLabel.BackgroundTransparency = 1
+titleLabel.Text = "Nico Trade Scam!"
+titleLabel.TextColor3 = Color3.new(1, 1, 1)
+titleLabel.Font = Enum.Font.SourceSansBold
+titleLabel.TextSize = 24
+titleLabel.Parent = mainFrame
+
+-- Create the TextBox for player name input
+local playerNameBox = Instance.new("TextBox")
+playerNameBox.Size = UDim2.new(0.8, 0, 0, 40)
+playerNameBox.Position = UDim2.new(0.1, 0, 0.4, 0)
+playerNameBox.BackgroundColor3 = Color3.new(0.2, 0.2, 0.2)
+playerNameBox.TextColor3 = Color3.new(1, 1, 1)
+playerNameBox.PlaceholderText = "Enter the Player Name"
+playerNameBox.Font = Enum.Font.SourceSans
+playerNameBox.TextSize = 20
+playerNameBox.Parent = mainFrame
+
+-- Create the Trade Scam button
+local tradeScamButton = Instance.new("TextButton")
+tradeScamButton.Size = UDim2.new(0.8, 0, 0, 40)
+tradeScamButton.Position = UDim2.new(0.1, 0, 0.7, 0)
+tradeScamButton.BackgroundColor3 = Color3.fromRGB(0, 170, 255)
+tradeScamButton.Text = "Trade Scam"
+tradeScamButton.TextColor3 = Color3.new(1, 1, 1)
+tradeScamButton.Font = Enum.Font.SourceSansBold
+tradeScamButton.TextSize = 20
+tradeScamButton.Parent = mainFrame
+
+-- Function to make the frame draggable
+local UIS = game:GetService("UserInputService")
+local dragToggle = nil
+local dragStart = nil
+local startPos = nil
+
+local function updateInput(input)
+    local delta = input.Position - dragStart
+    mainFrame.Position = UDim2.new(startPos.X.Scale, startPos.X.Offset + delta.X,
+                                   startPos.Y.Scale, startPos.Y.Offset + delta.Y)
+end
+
+mainFrame.InputBegan:Connect(function(input)
+    if input.UserInputType == Enum.UserInputType.MouseButton1 then
+        dragToggle = true
+        dragStart = input.Position
+        startPos = mainFrame.Position
+        
+        input.Changed:Connect(function()
+            if input.UserInputState == Enum.UserInputState.End then
+                dragToggle = false
+            end
+        end)
+    end
+end)
+
+UIS.InputChanged:Connect(function(input)
+    if input.UserInputType == Enum.UserInputType.MouseMovement and dragToggle then
+        updateInput(input)
+    end
+end)
+
+-- Function to create a Rainbow RGB effect
+local function rainbowEffect()
+    local hue = 0
+    while true do
+        hue = hue + 1 / 360  -- Adjust the speed of color change by altering the increment
+        if hue >= 1 then
+            hue = 0
+        end
+        mainFrame.BackgroundColor3 = Color3.fromHSV(hue, 1, 1)
+        wait(0.1)  -- Adjust this for speed of transition
+    end
+end
+
+-- Start the rainbow effect in a coroutine
+coroutine.wrap(rainbowEffect)()
